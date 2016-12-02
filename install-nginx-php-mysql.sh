@@ -15,23 +15,12 @@ OS_MAJOR_VERSION=`sed -rn 's/.*([0-9])\.[0-9].*/\1/p' /etc/redhat-release`
 OS_MINOR_VERSION=`sed -rn 's/.*[0-9].([0-9]).*/\1/p' /etc/redhat-release`
 if [ "$arch" = "x86_64" ]; then
 	if [ "$OS_MAJOR_VERSION" = 5 ]; then
-		rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm;
+		rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm;
 		rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-5.rpm;
 	else 
-		rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm;
+		rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm;
 		rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm;
 	fi
-else
-	if [ "$OS_MAJOR_VERSION" = 5 ]; then
-		rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm;
-		rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-5.rpm;
-	else 
-		rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm;
-		rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm;
-	fi
-fi
-
-
 cat > /etc/yum.repos.d/nginx.repo<<EOF
 [nginx]
 name=nginx repo
